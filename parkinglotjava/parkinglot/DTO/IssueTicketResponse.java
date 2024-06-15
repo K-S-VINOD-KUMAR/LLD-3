@@ -15,6 +15,8 @@ public class IssueTicketResponse {
 
     private Vehicle vehicle;
 
+    private String StatusCode;
+
     // Getters and Setters for ticketNumber, entryTime, slot, vehicle go here
 
     public String getTicketNumber() {
@@ -48,5 +50,26 @@ public class IssueTicketResponse {
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+    private String FailureString;
+
+    //getter and setter for FailureString
+
+    public String getFailureString() {
+        return FailureString;
+    }
+
+    public void setFailureString(String failureString) {
+        FailureString = failureString;
+    }
     
+    // getter and setter for StatusCode
+
+    public String getStatusCode() {
+        return StatusCode;
+    }
+
+    public void setStatusCode(String statusCode) {
+        StatusCode = statusCode;
+    }
 }

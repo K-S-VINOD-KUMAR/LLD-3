@@ -18,7 +18,7 @@ public class ParkingLot {
 
     private ParkingLotStatus status;
 
-    private SlotAssignmentStratergy slotAssignmentStratergy;
+    private SlotAssignmentStratergyEnum slotAssignmentStratergy;
 
     // GETTERS AND SETTERS
 
@@ -78,11 +78,11 @@ public class ParkingLot {
         this.status = status;
     }
 
-    public SlotAssignmentStratergy getSlotAssignmentStratergy() {
+    public SlotAssignmentStratergyEnum getSlotAssignmentStratergy() {
         return slotAssignmentStratergy;
     }
 
-    public void setSlotAssignmentStratergy(SlotAssignmentStratergy slotAssignmentStratergy) {
+    public void setSlotAssignmentStratergy(SlotAssignmentStratergyEnum slotAssignmentStratergy) {
         this.slotAssignmentStratergy = slotAssignmentStratergy;
     }
 
