@@ -45,6 +45,8 @@ public class Main {
 
         IssueTicketResponse response = ticketController.IssueTicket(request);
 
+        System.out.println(response.getTicketNumber());
+
 
 
     }

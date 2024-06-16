@@ -1,0 +1,232 @@
+BookMyShow Class 0:
+-------------------
+Path: bookmyshowjava/bookmyshow/requirements.txt
+
+Agenda:
+-> Design BookMyShow (SPRING BOOT PROJECT)
+    -> Overview/requirements
+    -> Class Diagram
+
+Step 0:
+-> Overview: Are we talking about movie ticket booking platform
+    -> yes
+-> Standalone v/s software system(for aggrigation)
+    -> Software System
+-> Do we need to presist the data IN MEMORY / DB
+    -> Yes, DB(sql)
+
+Requirements Gathering:
+
+Visualization:
+    -> System
+    -> User Journey
+
+User Journey Chart:
+User => City => Movies => Shows => Seats => Payment => Ticket
+
+User Journey:
+1. Movie ticket platform
+2. BMS Supports Multiple cities and have Multiple theaters in a location.
+3. Each theater can have multiple screens and Each screen can run a movie at a time.
+4. mutiple movies will be there with different show timings.
+5. user should be able to book a show.
+
+Show: Combination of Movie + Theater + Timing of Particular Screen.
+
+6. Screen may be different types like 2D, 3D, IMAX etc.
+7. different type of seats and each seat type have different prices as per show.
+8. Seats will have layout like 10x10, 20x20 etc.
+9. No two Users are allowed to book same seat at a time.
+10. Maximum ticket blocking cannot be > 10. each user can book 10 seats can be booked at a time.
+
+Pricing Dependent on:
+Price => Movie + Seat Type + Show timing + Theater + Screen Type + Audio Type
+
+11. Payment modes: Credit Card, Debit Card, Net Banking, Wallets, UPI
+
+Payment Modes:
+-> Credit Card
+-> Debit Card
+-> Net Banking
+-> Wallets
+-> UPI
+
+12. Partial Payment is allowed/supported.
+13. Generate Ticket after payment.
+
+14. User should be able to cancel the ticket.
+
+15. User should be able to see the history of bookings.
+
+16. Movie can run in multiple languages.
+
+17. Screen will have different support types.
+
+18. Each screen have multiple seats with different types.(Gold, Silver, Platinum)
+
+System:
+Theater:
+Pictorial Chart:
+    -> City
+        -> Theater
+            -> Screen
+                -> Show
+                    -> Seats
+Region/City(Theater1, Theater2, Theater3)
+    -> Theater1(Screen1, Screen2, Screen3)
+        -> Screen1(2D, 3D, IMAX)(Gold, Silver, Platinum)
+            -> Show1(Movie1, Timing1, Seats)
+            -> Show2(Movie2, Timing2, Seats)
+        -> Screen2(2D, 3D, IMAX)
+            -> Show1(Movie1, Timing1, Seats)
+            -> Show2(Movie2, Timing2, Seats)
+        
+
+Class Diagram:
+    -> Visualization
+    -> Nouns
+
+Visualization:
+==============
+User => City => Movies => Shows => Seats => Payment => Ticket
+
+System Part:
+    Class Region:
+        -> ID
+        -> Name
+        -> List<Theater> theaters(class)
+        -> State...
+
+    Class Theater:
+        -> ID
+        -> Name
+        -> List<Screen> screens
+        -> TheaterType
+        -> City
+    
+    Class Screen:
+        -> ID
+        -> Name
+        -> List <Feature> features
+        -> List <seats> seats
+    
+    Enum Feature:
+        -> 2D
+        -> 3D
+        -> IMAX
+        -> Dolby
+        -> DTS
+
+    class Seat:
+        -> ID
+        -> Number
+        -> SeatType
+        X (-> Status(should not be attribute for seat beacuse it is Combination of Show + Seat))
+        -> Row
+        -> Column
+    
+    enum SeatType:
+        -> Gold
+        -> Silver
+        -> Platinum
+
+User Journey Part:
+
+    Class Movie:
+        -> ID
+        -> Name
+        -> List<languages> languages
+        -> List<Feature> features
+        -> List<Cast> casts
+        -> Screen Time
+
+    Class Show:
+        -> ID
+        -> Start Time
+        -> Movie
+        -> Screen
+        -> List<Feature> features
+
+    Class ShowSeat:
+        -> Show_id
+        -> Seat_id
+        -> Status
+        X(-> Price)
+        -> ShowSeatType
+
+    Class ShowSeatType:
+        -> Show_id
+        -> SeatType
+        -> Price
+
+    Class Payment:
+        -> ID
+        -> Amount
+        -> PaymentType
+        -> Status
+        -> List<transactions> transactions
+        -> timestamp
+    
+    class User:
+        -> ID
+        -> Name
+        -> Email
+        -> Phone
+        -> List<Booking> bookings
+
+    class Ticket/Booking:
+        -> ID
+        -> Number
+        -> List<ShowSeat> showSeats
+        -> User
+        -> Status
+        -> Amount
+        -> List<Payment> payments
+        -> timestamp
+    
+    Enum PaymentType:
+        -> Credit Card
+        -> Debit Card
+        -> Net Banking
+        -> Wallets
+        -> UPI
+
+    Class Transaction
+        -> ID
+        -> Amount
+        -> Status
+        -> Payment
+        -> timestamp
+
+    Class Cast:
+        -> ID
+        -> Name
+        -> Role
+    
+    Class Language:
+        -> ID
+        -> Name
+
+================================================================================================
+
+BookMyShow Class 1:
+-------------------
+Path: bookmyshowjava/bookmyshow/requirements.txt
+
+Agenda:
+    
+    
+    
+
+
+
+        
+
+
+
+
+
+
+
+
+
